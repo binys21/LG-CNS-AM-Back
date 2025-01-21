@@ -1,3 +1,5 @@
+package ex01;
+
 public class RegisterRequest {
     private String email;
     private String password;

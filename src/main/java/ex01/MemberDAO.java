@@ -1,8 +1,10 @@
+package ex01;
+
 import java.util.*;
 public class MemberDAO {
     private static long nextId=0;
     //키: 이메일, 값: Member
-    private Map<String,Member>map =new HashMap<>();
+    private Map<String, Member>map =new HashMap<>();
 
     //조회
     public Member selectByEmail(String email){
