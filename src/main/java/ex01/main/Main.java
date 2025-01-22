@@ -1,4 +1,4 @@
-package org.example;
+package ex01.main;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,11 +8,11 @@ import ex01.DuplicateMemberException;
 import ex01.MemberDAO;
 import ex01.MemberRegisterService;
 import ex01.RegisterRequest;
-
+import ex01.assembler.Assembler;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             System.out.println("명령어를 입력하세요. ");
@@ -34,9 +34,7 @@ public class Main {
         }
     }
 
-    private static MemberDAO memberDAO = new MemberDAO();
-    private static MemberRegisterService regSvc = new MemberRegisterService(memberDAO);
-    private static ChangePasswordService pwdSvc = new ChangePasswordService(memberDAO);
+    private static Assembler assembler = new Assembler();
 
     private static void printHelp() {
         System.out.println();
@@ -51,7 +49,7 @@ public class Main {
             return;
         }
 
-        //MemberRegisterService regSvc = new MemberRegisterService(new MemberDAO());
+        MemberRegisterService regSvc = assembler.getRegSvc();
         RegisterRequest reg = new RegisterRequest();
         reg.setEmail(args[1]);
         reg.setName(args[2]);
@@ -77,7 +75,7 @@ public class Main {
             return;
         }
 
-        //ChangePasswordService pwdSvc = new ChangePasswordService(new MemberDAO());
+        ChangePasswordService pwdSvc = assembler.getPwdSvc();
         try {
             pwdSvc.changePassword(args[1], args[2], args[3]);
             System.out.println("패스워드를 변경하였습니다.");
