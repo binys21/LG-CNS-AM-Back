@@ -1,10 +1,7 @@
 package ex01.main;
 
 import config.AppCtx;
-import ex01.ChangePasswordService;
-import ex01.DuplicateMemberException;
-import ex01.MemberRegisterService;
-import ex01.RegisterRequest;
+import ex01.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -32,10 +29,19 @@ public class MainforSpring {
                 processChangeCommand(command.split(" "));
                 continue;
             }
+            if (command.startsWith("list")) {
+                processListCommand(command.split(" "));
+                continue;
+            }
             printHelp();
 
         }
     }
+    private static void processListCommand(String[] args) {
+        MemberListPrinter memberListPrinter=ctx.getBean("memberListPrinter", MemberListPrinter.class);
+        memberListPrinter.printAll();
+    }
+
     private static void printHelp() {
         System.out.println();
         System.out.println("잘못된 명령입니다. 아래 명령어 사용법을 확인하세요.");

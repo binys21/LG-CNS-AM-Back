@@ -1,8 +1,6 @@
 package config;
 
-import ex01.ChangePasswordService;
-import ex01.MemberDAO;
-import ex01.MemberRegisterService;
+import ex01.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 @Configuration
@@ -19,5 +17,13 @@ public class AppCtx {
     @Bean
     public ChangePasswordService changePwdSvc(){
         return new ChangePasswordService(memberDAO());
+    }
+    @Bean
+    public MemberPrinter memberPrinter(){
+        return new MemberPrinter();
+    }
+    @Bean
+    public MemberListPrinter memberListPrinter(){
+        return new MemberListPrinter(memberDAO(),memberPrinter());
     }
 }
