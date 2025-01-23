@@ -33,9 +33,23 @@ public class MainforSpring {
                 processListCommand(command.split(" "));
                 continue;
             }
+            if (command.startsWith("info")) {
+                processInfoCommand(command.split(" "));
+                continue;
+
+            }
             printHelp();
 
         }
+    }
+
+    private static void processInfoCommand(String[] args) {
+        if(args.length != 2) {
+            printHelp();
+            return;
+        }
+        MemberInfoPrinter memberInfoPrinter = ctx.getBean("memberInfoPrinter", MemberInfoPrinter.class);
+        memberInfoPrinter.printMemberInfo(args[1]);
     }
     private static void processListCommand(String[] args) {
         MemberListPrinter memberListPrinter=ctx.getBean("memberListPrinter", MemberListPrinter.class);
