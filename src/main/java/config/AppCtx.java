@@ -33,6 +33,12 @@ public class AppCtx {
         infoPrinter.setMemberDAO(memberDAO());
         infoPrinter.setMemberPrinter(memberPrinter());
         return infoPrinter;
-
+    }
+    @Bean
+    public VersionPrinter versionPrinter(){
+        VersionPrinter versionPrinter = new VersionPrinter();
+        versionPrinter.setMajorVersion(5);
+        versionPrinter.setMinorVersion(4);
+        return versionPrinter;
     }
 }
