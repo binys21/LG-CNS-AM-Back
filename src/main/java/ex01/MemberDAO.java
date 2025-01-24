@@ -1,6 +1,9 @@
 package ex01;
 
+import org.springframework.stereotype.Component;
+
 import java.util.*;
+@Component
 public class MemberDAO {
     private static long nextId=0;
     //키: 이메일, 값: Member

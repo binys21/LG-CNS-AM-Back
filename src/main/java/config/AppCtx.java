@@ -1,9 +1,12 @@
 package config;
 
 import ex01.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 @Configuration
+@ComponentScan(basePackages = {"ex01"})
 public class AppCtx {
     @Bean
     public MemberDAO memberDAO(){
@@ -12,19 +15,20 @@ public class AppCtx {
 
     @Bean
     public MemberRegisterService memberRegSvc(){
-        return new MemberRegisterService(memberDAO());
+        return new MemberRegisterService();
     }
     @Bean
     public ChangePasswordService changePwdSvc(){
-        return new ChangePasswordService(memberDAO());
+        return new ChangePasswordService();
     }
     @Bean
+    @Qualifier("printer")
     public MemberPrinter memberPrinter(){
         return new MemberPrinter();
     }
     @Bean
     public MemberListPrinter memberListPrinter(){
-        return new MemberListPrinter(memberDAO(),memberPrinter());
+        return new MemberListPrinter();
     }
 
     @Bean
@@ -40,5 +44,9 @@ public class AppCtx {
         versionPrinter.setMajorVersion(5);
         versionPrinter.setMinorVersion(4);
         return versionPrinter;
+    }
+    @Bean
+    public MemberSummaryPrinter memberPrinter2(){
+        return new MemberSummaryPrinter();
     }
 }

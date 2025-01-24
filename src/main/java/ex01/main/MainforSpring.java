@@ -58,11 +58,11 @@ public class MainforSpring {
             printHelp();
             return;
         }
-        MemberInfoPrinter memberInfoPrinter = ctx.getBean("memberInfoPrinter", MemberInfoPrinter.class);
+        MemberInfoPrinter memberInfoPrinter = ctx.getBean("infoPrinter", MemberInfoPrinter.class);
         memberInfoPrinter.printMemberInfo(args[1]);
     }
     private static void processListCommand(String[] args) {
-        MemberListPrinter memberListPrinter=ctx.getBean("memberListPrinter", MemberListPrinter.class);
+        MemberListPrinter memberListPrinter=ctx.getBean("listPrinter", MemberListPrinter.class);
         memberListPrinter.printAll();
     }
 
@@ -80,7 +80,7 @@ public class MainforSpring {
             return;
         }
         // MemberRegisterService regSvc = assembler.getRegSvc();
-        MemberRegisterService regSvc = ctx.getBean("memberRegSvc", MemberRegisterService.class);
+        MemberRegisterService regSvc = ctx.getBean( MemberRegisterService.class);
         RegisterRequest reg = new RegisterRequest();
         reg.setEmail(args[1]);
         reg.setName(args[2]);
@@ -107,7 +107,7 @@ public class MainforSpring {
         }
 
         // ChangePasswordService pwdSvc = assembler.getPwdSvc();
-        ChangePasswordService pwdSvc = ctx.getBean("changePwdSvc", ChangePasswordService.class);
+        ChangePasswordService pwdSvc = ctx.getBean( ChangePasswordService.class);
         try {
             pwdSvc.changePassword(args[1], args[2], args[3]);
             System.out.println("패스워드를 변경하였습니다.");

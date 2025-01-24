@@ -1,13 +1,13 @@
 package ex01;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDateTime;
-
+@Component
 public class MemberRegisterService {
+    @Autowired
     private MemberDAO memberDAO;
-
-    public MemberRegisterService(MemberDAO memberDAO) {
-        this.memberDAO=memberDAO;
-    }
 
     public long regist(RegisterRequest req){
         Member member = memberDAO.selectByEmail(req.getEmail());
