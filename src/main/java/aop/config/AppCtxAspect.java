@@ -1,5 +1,6 @@
 package aop.config;
 
+import aop.CacheAspect;
 import aop.ExeTimeAspect;
 import ex03.Calculator;
 import ex03.ImpCalculator;
@@ -11,6 +12,11 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration
 @EnableAspectJAutoProxy
 public class AppCtxAspect {
+    @Bean
+    public CacheAspect cacheAspect() {
+        return new CacheAspect();
+    }
+
     @Bean
     public ExeTimeAspect exeTimeAspect() {
         return new ExeTimeAspect();
