@@ -1,15 +1,12 @@
 package ex01;
 
-public class MemberInfoPrinter {
-    private MemberDAO memberDAO;
-    private MemberPrinter printer;
+import org.springframework.beans.factory.annotation.Autowired;
 
-    public void setMemberDAO(MemberDAO memberDAO) {
-        this.memberDAO = memberDAO;
-    }
-    public void setMemberPrinter(MemberPrinter printer) {
-        this.printer = printer;
-    }
+public class MemberInfoPrinter {
+    @Autowired
+    private MemberDAO memberDAO;
+    @Autowired
+    private MemberPrinter printer;
 
     public void printMemberInfo(String email){
         Member member=memberDAO.selectByEmail(email);

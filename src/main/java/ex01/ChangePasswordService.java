@@ -1,11 +1,10 @@
 package ex01;
 
-public class ChangePasswordService {
-    private MemberDAO memberDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 
-    public ChangePasswordService(MemberDAO memberDAO) {
-        this.memberDAO = memberDAO;
-    }
+public class ChangePasswordService {
+    @Autowired
+    private MemberDAO memberDAO;
 
     public void changePassword(String email,String currentPw,String newPw){
         Member member=memberDAO.selectByEmail(email);
