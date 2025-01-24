@@ -1,4 +1,4 @@
-package ex01.config;
+package config;
 
 import ex01.*;
 import ex02.Client;

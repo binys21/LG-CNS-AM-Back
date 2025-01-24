@@ -1,11 +1,9 @@
-package ex01.main;
+package main;
 
-import aop.config.AppCtxAspect;
+import config.AppCtxAspect;
 import ex03.Calculator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-
-import java.lang.annotation.Annotation;
 
 public class MainForAspect {
     public static void main(String[] args) {

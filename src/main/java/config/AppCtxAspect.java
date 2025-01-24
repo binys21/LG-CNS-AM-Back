@@ -1,4 +1,4 @@
-package aop.config;
+package config;
 
 import aop.CacheAspect;
 import aop.ExeTimeAspect;

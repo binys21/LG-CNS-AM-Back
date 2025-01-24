@@ -1,6 +1,6 @@
-package ex01.main;
+package main;
 
-import ex01.config.AppCtx;
+import config.AppCtx;
 import ex02.Client2;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
