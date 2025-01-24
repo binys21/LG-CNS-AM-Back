@@ -1,6 +1,6 @@
 package ex01.main;
 
-import config.AppCtx;
+import ex01.config.AppCtx;
 import ex01.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
